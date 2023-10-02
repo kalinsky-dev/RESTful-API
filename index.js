@@ -3,6 +3,7 @@ const cors = require('./middlewares/cors');
 const app = express();
 
 app.use(express.json());
+
 // Allow the Server to receive Requests from *
 // CORS(Errors)
 app.use(cors());
