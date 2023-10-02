@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-const secret = 'q-630257xcwsad2wefqwerct43';
+const secret = 'k-630257xcwsad2wefqwerct43';
 
 // Set is faster then an Array in therms of Searching!
 // It is better to store these Tokens in the DB!
