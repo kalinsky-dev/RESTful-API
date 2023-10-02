@@ -40,4 +40,20 @@ dataController.get('/:id', async (req, res, next) => {
    res.json(item);
 });
 
+// UPDATE A SINGLE ITEM
+dataController.put('/:id', hasUser(), async (req, res, next) => {
+  const item = await getById(req.params.id);
+  if (req.user._id != item._ownerId) {
+      return res.status(403).json({ message: 'You cannot modify this record' });
+  }
+
+  try {
+      const result = await update(req.params.id, req.body);
+      res.json(result);
+  } catch (err) {
+      const message = parseError(err);
+      res.status(400).json({ message });
+  }
+});
+
 module.exports = dataController;
