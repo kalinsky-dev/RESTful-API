@@ -2,6 +2,7 @@ const authController = require('express').Router();
 const { body, validationResult } = require('express-validator');
 
 const { register, login, logout } = require('../services/userService');
+const { parseError } = require('../util/parser');
 
 // REGISTER
 authController.post(
@@ -20,6 +21,7 @@ authController.post(
       const token = await register(req.body.email, req.body.password);
       res.json(token);
     } catch (error) {
+      const message = parseError(error);
       res.status(400).json({ message });
     }
   }
@@ -31,6 +33,7 @@ authController.post('/login', async (req, res) => {
     const token = await login(req.body.email, req.body.password);
     res.json(token);
   } catch (error) {
+    const message = parseError(error);
     res.status(401).json({ message });
   }
 });
