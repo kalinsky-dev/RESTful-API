@@ -11,12 +11,17 @@ const {
 } = require('../services/itemService');
 const { parseError } = require('../util/parser');
 
+// Get All Items or Get All with a specific query if any
 dataController.get('/', async (req, res) => {
   // console.log(req.user);
-  // let items = [];
 
-  const items = await getAll();
-
+  let items = [];
+  if (req.query.where) {
+    const userId = JSON.parse(req.query.where.split('=')[1]);
+    items = await getByUserId(userId);
+  } else {
+    items = await getAll();
+  }
   res.json(items);
 });
 
@@ -37,39 +42,38 @@ dataController.post('/', hasUser(), async (req, res) => {
 // DETAILS OF A SINGLE ITEM
 dataController.get('/:id', async (req, res, next) => {
   const item = await getById(req.params.id);
-   res.json(item);
+  res.json(item);
 });
 
 // UPDATE A SINGLE ITEM
 dataController.put('/:id', hasUser(), async (req, res, next) => {
   const item = await getById(req.params.id);
   if (req.user._id != item._ownerId) {
-      return res.status(403).json({ message: 'You cannot modify this record' });
+    return res.status(403).json({ message: 'You cannot modify this record' });
   }
 
   try {
-      const result = await update(req.params.id, req.body);
-      res.json(result);
+    const result = await update(req.params.id, req.body);
+    res.json(result);
   } catch (err) {
-      const message = parseError(err);
-      res.status(400).json({ message });
+    const message = parseError(err);
+    res.status(400).json({ message });
   }
 });
-
 
 // DELETE A SINGLE ITEM
 dataController.delete('/:id', hasUser(), async (req, res) => {
   const item = await getById(req.params.id);
   if (req.user._id != item._ownerId) {
-      return res.status(403).json({ message: 'You cannot modify this record' });
+    return res.status(403).json({ message: 'You cannot modify this record' });
   }
 
   try {
-      await deleteById(req.params.id);
-      res.status(204).end();
+    await deleteById(req.params.id);
+    res.status(204).end();
   } catch (err) {
-      const message = parseError(err);
-      res.status(400).json({ message });
+    const message = parseError(err);
+    res.status(400).json({ message });
   }
 });
 
