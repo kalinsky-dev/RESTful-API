@@ -3,6 +3,7 @@ const { body, validationResult } = require('express-validator');
 
 const { register, login, logout } = require('../services/userService');
 
+// REGISTER
 authController.post(
   '/register',
   body('email').isEmail().withMessage('Invalid email'),
@@ -23,5 +24,15 @@ authController.post(
     }
   }
 );
+
+// LOGIN
+authController.post('/login', async (req, res) => {
+  try {
+      const token = await login(req.body.email, req.body.password);
+      res.json(token);
+  } catch (error) {
+      res.status(401).json({ message });
+  }
+});
 
 module.exports = authController;
