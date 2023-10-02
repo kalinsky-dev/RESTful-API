@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('./middlewares/cors');
 const authController = require('./controllers/authController');
 const dataController = require('./controllers/dataController');
+const trimBody = require('./middlewares/trimBody');
 
 const connectionString = 'mongodb://127.0.0.1:27017/furniture';
 
@@ -17,8 +18,10 @@ async function start() {
 
   app.use(express.json());
   // Allow the Server to receive Requests from *
-  // CORS(Errors)
+  // Solves the CORS(Errors)
   app.use(cors());
+  // Trim the white spaces in the User's Input
+  app.use(trimBody());
 
   app.get('/', (req, res) => {
     res.json({ message: 'REST service operational' });
