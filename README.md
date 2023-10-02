@@ -1,6 +1,8 @@
 <h1 align="center">RESTful-API</h1>
 <h2 align="center">Express.js | Mongoose | JWT</h2>
 
+&nbsp; &nbsp; &nbsp;This is my **Dynamic Content Server**. The **Data** between the **Frontend** and my **RESTful API** is **Transmitted** by means of a **JSON** files. It stores all the **Data** for the **Users** and **Created Items** in **MongoDB**. The **API** supports all **CRUD** operations, needed by a **Modern Web Application**. All **Actions** of the **Users** in the **DB** are **Strictly Reviewed** under **Authentication and Authorization**.
+
 ## Details
 
 - created with Node.js + Express.js + MongoDB
