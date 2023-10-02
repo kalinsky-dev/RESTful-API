@@ -5,7 +5,6 @@
 
 - created with Node.js + Express.js + MongoDB
 - used libraries like: bcrypt, jsonwebtoken, express-validator, mongoose
-- to use `npm i` `node index.js`
 - email: kalin@abv.bg, password: 123
 
 ## All CRUD operations
@@ -29,7 +28,11 @@
 - `PUT /data/catalog/:id` - edit item
 - `DELETE /data/catalog/:id` - delete item
 
-To run RESTful-API locally, follow these steps:
+### Before you start the Application you need to install MongoDB.
+
+### After successful installation of MongoDB you can start the REST Api.
+
+To run this RESTful-API locally, follow these steps:
 
 1.  Clone the repository:
 
