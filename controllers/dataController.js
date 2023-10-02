@@ -56,4 +56,21 @@ dataController.put('/:id', hasUser(), async (req, res, next) => {
   }
 });
 
+
+// DELETE A SINGLE ITEM
+dataController.delete('/:id', hasUser(), async (req, res) => {
+  const item = await getById(req.params.id);
+  if (req.user._id != item._ownerId) {
+      return res.status(403).json({ message: 'You cannot modify this record' });
+  }
+
+  try {
+      await deleteById(req.params.id);
+      res.status(204).end();
+  } catch (err) {
+      const message = parseError(err);
+      res.status(400).json({ message });
+  }
+});
+
 module.exports = dataController;
