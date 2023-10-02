@@ -28,11 +28,18 @@ authController.post(
 // LOGIN
 authController.post('/login', async (req, res) => {
   try {
-      const token = await login(req.body.email, req.body.password);
-      res.json(token);
+    const token = await login(req.body.email, req.body.password);
+    res.json(token);
   } catch (error) {
-      res.status(401).json({ message });
+    res.status(401).json({ message });
   }
+});
+
+// LOGOUT
+authController.get('/logout', async (req, res) => {
+  const token = req.headers['x-authorization'];
+  console.log(token);
+  res.status(204).end();
 });
 
 module.exports = authController;
