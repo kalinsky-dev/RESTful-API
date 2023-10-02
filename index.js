@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 
 const cors = require('./middlewares/cors');
 const authController = require('./controllers/authController');
+const dataController = require('./controllers/dataController');
 
 const connectionString = 'mongodb://127.0.0.1:27017/furniture';
 
@@ -24,5 +25,7 @@ async function start() {
   });
 
   app.use('/users', authController);
+  app.use('/data/catalog', dataController);
+
   app.listen(3030, () => console.log('REST service started'));
 }
