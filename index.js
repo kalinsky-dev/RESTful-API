@@ -5,6 +5,7 @@ const cors = require('./middlewares/cors');
 const authController = require('./controllers/authController');
 const dataController = require('./controllers/dataController');
 const trimBody = require('./middlewares/trimBody');
+const session = require('./middlewares/session');
 
 const connectionString = 'mongodb://127.0.0.1:27017/furniture';
 
@@ -22,6 +23,8 @@ async function start() {
   app.use(cors());
   // Trim the white spaces in the User's Input
   app.use(trimBody());
+  // Add a session on the Server
+  app.use(session());
 
   app.get('/', (req, res) => {
     res.json({ message: 'REST service operational' });

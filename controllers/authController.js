@@ -40,7 +40,8 @@ authController.post('/login', async (req, res) => {
 
 // LOGOUT
 authController.get('/logout', async (req, res) => {
-  const token = req.headers['x-authorization'];
+  const token = req.token;
+  // const token = req.headers['x-authorization'];
   // console.log(token);
   await logout(token);
   res.status(204).end();
