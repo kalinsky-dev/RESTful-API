@@ -20,6 +20,7 @@ dataController.get('/', async (req, res) => {
   res.json(items);
 });
 
+// CREATE ITEM
 dataController.post('/', hasUser(), async (req, res) => {
   // console.log(req.body);
   // res.end();
@@ -31,6 +32,12 @@ dataController.post('/', hasUser(), async (req, res) => {
     const message = parseError(err);
     res.status(400).json({ message });
   }
+});
+
+// DETAILS OF A SINGLE ITEM
+dataController.get('/:id', async (req, res, next) => {
+  const item = await getById(req.params.id);
+   res.json(item);
 });
 
 module.exports = dataController;
