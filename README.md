@@ -23,7 +23,6 @@
 - `POST /users/register` - register
 - `POST /users/login` - login
 - `GET /users/logout` - logout
-  <br />
 
 - `GET /data/catalog` - get all items
 - `POST /data/catalog` - create item
