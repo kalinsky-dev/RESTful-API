@@ -3,7 +3,7 @@
 
 &nbsp; &nbsp; &nbsp;This is my **Dynamic Content Server**. The **Data** between the **Frontend** and my **RESTful API** is **transmitted** by means of a **JSON** files. The **Server** stores all the **Data** for the **Users** and **Created Items** in **MongoDB**. It supports all **CRUD** operations, needed by a **Modern Web Application**.
 
-&nbsp; &nbsp; &nbsp;All **Actions** of the **Users** in the **DB Collections** are **Strictly Reviewed** under **Authentication and Authorization**. The **Authentication** is implemented with two fields: **email** and **password**. To make an **Authorized request**, add **X-Authorization: {token}** **Header**, where **{token}** is the **access token**, returned by the **Service** upon **successful** Login or Registration.
+&nbsp; &nbsp; &nbsp;All **Actions** of the **Users** in the **DB Collections** are **Strictly Reviewed** under **Authentication and Authorization**. The **Authentication** is implemented with two fields: **email** and **password**. To make an **Authorized request**, add **X-Authorization: {token}** **Header**, where **{token}** is the **access token**, returned by the **Service** upon **successful** Login or Registration. To Logout from the System, send an **Authorized**  `GET` request to `/users/logout`. **The Service returns an empty response - if you attempt to parse it as JSON, you will receive an error!**. You can check for this type of response by looking at the **status** (204 instead of 200) and the **Content-Type** **Header** (will not be present).
 
 ## Details
 
