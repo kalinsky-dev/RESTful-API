@@ -2,6 +2,7 @@
 <h2 align="center">Express.js | Mongoose | JWT</h2>
 
 &nbsp; &nbsp; &nbsp;This is my **Dynamic Content Server**. The **Data** between the **Frontend** and my **RESTful API** is **transmitted** by means of a **JSON** files. The **Server** stores all the **Data** for the **Users** and **Created Items** in **MongoDB**. It supports all **CRUD** operations, needed by a **Modern Web Application**.
+
 &nbsp; &nbsp; &nbsp;All **Actions** of the **Users** in the **DB Collections** are **Strictly Reviewed** under **Authentication and Authorization**. To make an **Authorized request**, add **X-Authorization: {token}** **Header**, where **{token}** is the **access token**, returned by the **Service** upon **successful** Login or Registration.
 
 ## Details
