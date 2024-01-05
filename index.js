@@ -16,7 +16,8 @@ async function start() {
   console.log('Database connected!');
 
   const app = express();
-
+  
+  // Middleware to parse JSON requests
   app.use(express.json());
   // Allow the Server to receive Requests from *
   // Solves the CORS(Errors)
